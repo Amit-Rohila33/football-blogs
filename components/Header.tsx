@@ -1,8 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { IconButton } from "@chakra-ui/button";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { useColorMode } from "@chakra-ui/color-mode";
 
 const Header = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
+
   return (
     <>
       <nav className="flex items-center justify-between py-6">
@@ -27,6 +32,15 @@ const Header = () => {
           </li>
         </ul>
         <ul className="flex items-center">
+          <li className="mb-4 mr-4">
+            <IconButton
+              mt={4}
+              aria-label="Toggle Mode"
+              onClick={toggleColorMode}
+            >
+              {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+            </IconButton>
+          </li>
           <li className="mr-6 font-medium text-gray-600">
             <a href="#" className="hover:text-gray-400">
               Log in

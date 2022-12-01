@@ -3,20 +3,20 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="text-gray-600 mt-12 fixed bottom-0 left-0 bg-white w-full">
+    <footer className="text-gray-600 mt-12 fixed bottom-0 left-0 bg-footer w-full">
       <div className="container mx-auto flex items-center flex-col sm:flex-row py-8">
         <a
           href="/"
           className="flex items-center justify-center md:justify-start text-gray-900"
         >
           <Image src={"/football.png"} height={35} width={40} />
-          <span className="ml-3 text-md">Football Blog</span>
+          <span className="ml-3 text-md text-white">Football Blog</span>
         </a>
-        <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
+        <p className="text-sm text-white sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
           © 2022 Football's blog —
           <a
             href="https://www.linkedin.com/in/amit-kumar-0b0540234/"
-            className="text-gray-600 ml-1"
+            className="text-white ml-1"
             rel="noopener noreferrer"
             target="_blank"
           >
@@ -24,7 +24,7 @@ const Footer = () => {
           </a>
         </p>
         <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-          <a className="text-gray-500">
+          <a className="text-white">
             <svg
               fill="currentColor"
               strokeLinecap="round"
@@ -36,7 +36,7 @@ const Footer = () => {
               <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
             </svg>
           </a>
-          <a className="ml-3 text-gray-500">
+          <a className="ml-3 text-white">
             <svg
               fill="currentColor"
               strokeLinecap="round"
@@ -48,7 +48,7 @@ const Footer = () => {
               <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
             </svg>
           </a>
-          <a className="ml-3 text-gray-500">
+          <a className="ml-3 text-white">
             <svg
               fill="none"
               stroke="currentColor"
@@ -64,7 +64,7 @@ const Footer = () => {
           </a>
           <a
             href="https://www.linkedin.com/in/amit-kumar-0b0540234/"
-            className="ml-3 text-gray-500"
+            className="ml-3 text-white"
           >
             <svg
               fill="currentColor"
