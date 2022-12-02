@@ -5,6 +5,7 @@ import { ICollectionResponse, ICategory, IArticle } from "../types";
 import { AxiosResponse } from "axios";
 import Tabs from "../components/Tabs";
 import ArticleList from "../components/ArticleList";
+import qs from "qs";
 
 interface IPropTypes {
   categories: {
@@ -32,8 +33,15 @@ const Home: NextPage<IPropTypes> = ({ categories, articles }) => {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   // Articles
+
+  const options = {
+    populate: ["author.avatar"],
+    sort: ["id:desc"],
+  };
+
+  const queryString = qs.stringify(options);
   const { data: articles }: AxiosResponse<ICollectionResponse<IArticle[]>> =
-    await fetchArticles();
+    await fetchArticles(queryString);
 
   // Categories
   const { data: categories }: AxiosResponse<ICollectionResponse<ICategory[]>> =
