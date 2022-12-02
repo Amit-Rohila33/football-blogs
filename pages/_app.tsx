@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <ChakraProvider theme={theme}>
         <div className="container mx-auto font-sans">
           <Header />
-          <main>
+          <main className="pb-32">
             <Component {...pageProps} />
             <Footer />
           </main>
