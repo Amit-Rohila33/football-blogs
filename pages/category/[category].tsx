@@ -12,6 +12,8 @@ import {
 import { fetchArticles, fetchCategories } from "../../http";
 import qs from "qs";
 import ArticleList from "../../components/ArticleList";
+import Pagination from "../../components/Pagination";
+import { capitalizeFirstLetter, makeCategory } from "../../utils";
 
 interface IPropType {
   categories: {
@@ -22,11 +24,12 @@ interface IPropType {
     items: IArticle[];
     pagination: IPagination;
   };
+  slug: string;
 }
 
-const category = ({ categories, articles }: IPropType) => {
+const category = ({ categories, articles, slug }: IPropType) => {
   const formattedCategory = () => {
-    return "Test Category";
+    return capitalizeFirstLetter(makeCategory(slug));
   };
   return (
     <div>
@@ -35,6 +38,7 @@ const category = ({ categories, articles }: IPropType) => {
       </Head>
       <Tabs categories={categories.items} />
       <ArticleList articles={articles.items} />
+      <Pagination />
     </div>
   );
 };
@@ -42,8 +46,8 @@ const category = ({ categories, articles }: IPropType) => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   // console.log("query",{query})
   const options = {
-    populate: ['author.avatar'],
-    sort: ['id:desc'],
+    populate: ["author.avatar"],
+    sort: ["id:desc"],
     filters: {
       category: {
         slug: query.category,
@@ -70,6 +74,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         items: articles.data,
         pagination: articles.meta.pagination,
       },
+      slug: query.category,
     },
   };
 };
