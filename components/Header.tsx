@@ -10,10 +10,10 @@ const Header = () => {
 
   return (
     <>
-      <nav className="flex items-center justify-between py-6">
+      <nav className="flex items-center justify-between py-3">
         <Link href="/">
           <div className="flex items-center cursor-pointer">
-            <Image src="/football.png" height={35} width={40} />
+            <Image src="/football.png" height={35} width={40} alt="Image"/>
             <span className="font-bold ml-2 text-primary">Football Blogs</span>
           </div>
         </Link>

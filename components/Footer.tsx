@@ -3,13 +3,13 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="text-gray-600 mt-12 fixed bottom-0 left-0 bg-footer w-full">
+    <footer className="text-gray-600 mt-12 bottom-0 left-0 bg-footer w-full">
       <div className="container mx-auto flex items-center flex-col sm:flex-row py-8">
         <a
           href="/"
           className="flex items-center justify-center md:justify-start text-gray-900"
         >
-          <Image src={"/football.png"} height={35} width={40} />
+          <Image src={"/football.png"} height={35} width={40} alt="Image"/>
           <span className="ml-3 text-md text-white">Football Blog</span>
         </a>
         <p className="text-sm text-white sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">

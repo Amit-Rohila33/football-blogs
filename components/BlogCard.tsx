@@ -22,6 +22,7 @@ const BlogCard = ({ article }: IPropType) => {
             src={`http://localhost:1337${article.attributes.author.data.attributes.avatar.data.attributes.formats.thumbnail.url}`}
             height={40}
             width={40}
+            alt = {article.attributes.Title}
           />
         </div>
         <span className="text-sm font-bold ">
