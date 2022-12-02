@@ -1,11 +1,17 @@
 import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import { fetchArticles, fetchCategories } from "../http";
-import { ICollectionResponse, ICategory, IArticle } from "../types";
+import {
+  ICollectionResponse,
+  ICategory,
+  IArticle,
+  IPagination,
+} from "../types";
 import { AxiosResponse } from "axios";
 import Tabs from "../components/Tabs";
 import ArticleList from "../components/ArticleList";
 import qs from "qs";
+import Pagination from "../components/Pagination";
 
 interface IPropTypes {
   categories: {
@@ -13,10 +19,12 @@ interface IPropTypes {
   };
   articles: {
     items: IArticle[];
+    pagination: IPagination;
   };
 }
 
 const Home: NextPage<IPropTypes> = ({ categories, articles }) => {
+  const { page, pageCount } = articles.pagination;
   // console.log("categories", categories);
   return (
     <div>
@@ -27,16 +35,21 @@ const Home: NextPage<IPropTypes> = ({ categories, articles }) => {
       </Head>
       <Tabs categories={categories.items} />
       <ArticleList articles={articles.items} />
+      <Pagination page={page} pageCount={pageCount} />
     </div>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   // Articles
 
   const options = {
     populate: ["author.avatar"],
     sort: ["id:desc"],
+    pagination: {
+      page: query.page ? query.page : 1,
+      pageSize: 1,
+    },
   };
 
   const queryString = qs.stringify(options);
