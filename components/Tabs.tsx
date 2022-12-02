@@ -13,9 +13,9 @@ const Tabs = ({ categories }: IPropType) => {
     return category.attributes.Slug === router.query.category;
   };
 
-  const handleOnSearch = (query:string) =>{
-    console.log("handling search")
-  }
+  const handleOnSearch = (query: string) => {
+    console.log("handling search");
+  };
   return (
     <>
       <div className="my-8 flex items-center justify-between border-b-2 border-gray-100">
