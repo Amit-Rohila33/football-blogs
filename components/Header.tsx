@@ -18,16 +18,16 @@ const Header = () => {
           </div>
         </Link>
         <ul className="flex items-center">
-          <li className="mr-6 font-medium text-gray-600">
+          <li className="mr-6 font-medium">
             <a href="#">Products</a>
           </li>
-          <li className="mr-6 font-medium text-gray-600">
+          <li className="mr-6 font-medium">
             <a href="#">Pricing</a>
           </li>
-          <li className="mr-6 font-medium text-gray-600">
+          <li className="mr-6 font-medium">
             <a href="#">Docs</a>
           </li>
-          <li className="mr-6 font-medium text-gray-600">
+          <li className="mr-6 font-medium">
             <a href="#">Company</a>
           </li>
         </ul>
@@ -41,7 +41,7 @@ const Header = () => {
               {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
             </IconButton>
           </li>
-          <li className="mr-6 font-medium text-gray-600">
+          <li className="mr-6 font-medium ">
             <a href="#" className="hover:text-gray-400">
               Log in
             </a>

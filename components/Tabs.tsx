@@ -26,7 +26,7 @@ const Tabs = ({ categories }: IPropType) => {
               `${
                 router.pathname === "/"
                   ? "border-primary text-primary"
-                  : "border-white text-gray-400"
+                  : "border-white "
               }`
             }
           >
@@ -41,7 +41,7 @@ const Tabs = ({ categories }: IPropType) => {
                   `${
                     isActiveLink(category)
                       ? "border-primary text-primary"
-                      : "border-white text-gray-400"
+                      : "border-white "
                   }`
                 }
               >
