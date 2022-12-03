@@ -8,12 +8,13 @@ import {
   ICategory,
   ICollectionResponse,
   IPagination,
+  IQueryOptions,
 } from "../../types";
 import { fetchArticles, fetchCategories } from "../../http";
 import qs from "qs";
 import ArticleList from "../../components/ArticleList";
 import Pagination from "../../components/Pagination";
-import { capitalizeFirstLetter, makeCategory } from "../../utils";
+import { capitalizeFirstLetter, debounce, makeCategory } from "../../utils";
 import { useRouter } from "next/router";
 
 interface IPropType {
@@ -36,12 +37,20 @@ const category = ({ categories, articles, slug }: IPropType) => {
   const formattedCategory = () => {
     return capitalizeFirstLetter(makeCategory(slug));
   };
+
+  const handleSearch = (query: string) => {
+    router.push(`/category/${categorySlug}/?search=${query}`);
+  };
+
   return (
     <div>
       <Head>
         <title>Football's blog - {formattedCategory()}</title>
       </Head>
-      <Tabs categories={categories.items} />
+      <Tabs
+        categories={categories.items}
+        handleOnSearch={debounce(handleSearch, 500)}
+      />
       <ArticleList articles={articles.items} />
       <Pagination
         page={page}
@@ -54,7 +63,7 @@ const category = ({ categories, articles, slug }: IPropType) => {
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   // console.log("query",{query})
-  const options = {
+  const options: IQueryOptions = {
     populate: ["author.avatar"],
     sort: ["id:desc"],
     filters: {
@@ -63,10 +72,18 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       },
     },
     pagination: {
-      page: query.page ? query.page : 1,
+      page: query.page ? +query.page : 1,
       pageSize: 1,
     },
   };
+
+  if (query.search) {
+    options.filters = {
+      Title: {
+        $containsi: query.search,
+      },
+    };
+  }
 
   const queryString = qs.stringify(options);
   // console.log(queryString)
